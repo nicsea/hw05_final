@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Технологии{% endblock %}
+{% block content %}
+  <div class="row">
+    <h1>Технологии, которые используются в проекте</h1>
+    <aside class="col-12 col-md-3">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <img src="{% static 'img/python.png' %}" width="30" height="30" class="d-inline-block align-top"
+               alt=""> Python
+        </li>
+        <li class="list-group-item">
+          <img src="{% static 'img/django.png' %}" width="40" height="40" class="d-inline-block align-top"
+               alt=""> Django
+        </li>
+        <li class="list-group-item">
+          <img src="{% static 'img/bootstrap.png' %}" width="35" height="30" class="d-inline-block align-top"
+               alt=""> Bootstrap
+        </li>
+      </ul>
+    </aside>
+    <article class="col-12 col-md-9">
+      <br>
+      <p>В проекте <a href="{% url 'about:author' %}" class="link-primary">мной</a>
+        используется Python, Bootstrap и, конечно же Django.</p>
+      <p>Фреймворк Django серьезно упростил
+        управление пользователями и взаимодействие с базой данных посредством ORM. Внешняя красота проекта - это
+        HTML, CSS и JS фреймворк Bootstrap. А связывает это все и оживляет - Python.</p>
+    </article>
+  </div>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block title %}Вы вышли из системы{% endblock %}
+
+{% block content %}
+  {% include 'info_message.html' with param='logout' %}
+{% endblock %}

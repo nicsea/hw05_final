@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Об авторе проекта{% endblock %}
+{% block content %}
+  <h1>Об авторе</h1>
+  <p>
+    <br>
+    Привет! Меня зовут Евгений и я сейчас активно работаю над этим проектом. Изначальное его название -
+    <b><span style="color:red">Ya</span>tube</b>, но временами бывает и <b><span style="color:red">Йа</span>туп</b>.
+    Мне очень нравится, когда находится решение и проект возвращает изначальное название )
+  </p>
+  <p>
+    <a href="{% url 'about:tech' %}" class="btn btn-primary">
+      Задействованные технологии</a>
+  </p>
+  <p>
+    Проект определенно будет дополняться, все изменения будут доступны тут
+    <a class="git_logo" href="https://github.com/nicsea/">
+      <img src="{% static 'img/github.png' %}" width="30" height="30" alt="GitHub">
+    </a>
+  </p>
+{% endblock %}

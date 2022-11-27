@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}
+  {% if is_edit %}
+    Редактировать пост
+  {% else %}
+    Новый пост
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% if is_edit %}
+    {% include 'form_template.html' with param='edit_post' %}
+  {% else %}
+    {% include 'form_template.html' with param='create_post' %}
+  {% endif %}
+{% endblock %}
+
