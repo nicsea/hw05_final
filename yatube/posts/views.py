@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 
-from .constants import POSTS_PER_PAGE, POST_FIRST_CHARS
+from .constants import POSTS_PER_PAGE, POST_FIRST_CHARS_TITLE
 from .forms import PostForm, CommentForm
 from .models import Post, Group, User, Comment, Follow
 from .utils import posts_paginator
@@ -51,7 +51,7 @@ def post_detail(request, post_id):
     comments = Comment.objects.filter(post_id=post_id)
     context = {
         'post': post,
-        'char_count': POST_FIRST_CHARS,
+        'char_count': POST_FIRST_CHARS_TITLE,
         'author_posts_count': author_posts_count,
         'form': form,
         'comments': comments
