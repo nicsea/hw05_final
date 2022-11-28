@@ -3,6 +3,8 @@ from django.db import models
 
 from core.models import CreatedModel
 
+from .constants import POST_FIRST_CHARS
+
 User = get_user_model()
 
 
@@ -46,7 +48,7 @@ class Post(CreatedModel):
     )
 
     def __str__(self):
-        return self.text[:15]
+        return self.text[:POST_FIRST_CHARS]
 
     class Meta:
         ordering = ('-pub_date',)

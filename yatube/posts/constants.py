@@ -1,0 +1,2 @@
+POSTS_PER_PAGE: int = 10
+POST_FIRST_CHARS: int = 30

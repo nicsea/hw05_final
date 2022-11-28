@@ -1,25 +1,22 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 
-
+from .constants import POSTS_PER_PAGE, POST_FIRST_CHARS
 from .forms import PostForm, CommentForm
 from .models import Post, Group, User, Comment, Follow
 from .utils import posts_paginator
 
-POSTS_COUNT: int = 10
-CHAR_COUNT_TITLE: int = 30
-
 
 def index(request):
     post_list = Post.objects.select_related('group')
-    page_obj = posts_paginator(request, post_list, POSTS_COUNT)
+    page_obj = posts_paginator(request, post_list, POSTS_PER_PAGE)
     return render(request, 'posts/index.html', {'page_obj': page_obj})
 
 
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
     post_list = group.posts.all()
-    page_obj = posts_paginator(request, post_list, POSTS_COUNT)
+    page_obj = posts_paginator(request, post_list, POSTS_PER_PAGE)
     context = {
         'group': group,
         'page_obj': page_obj,
@@ -31,7 +28,7 @@ def profile(request, username):
     author = get_object_or_404(User, username=username)
     post_list = Post.objects.select_related('group').filter(
         author_id=author.id)
-    page_obj = posts_paginator(request, post_list, POSTS_COUNT)
+    page_obj = posts_paginator(request, post_list, POSTS_PER_PAGE)
 
     following = False
     if request.user.is_authenticated:
@@ -54,7 +51,7 @@ def post_detail(request, post_id):
     comments = Comment.objects.filter(post_id=post_id)
     context = {
         'post': post,
-        'char_count': CHAR_COUNT_TITLE,
+        'char_count': POST_FIRST_CHARS,
         'author_posts_count': author_posts_count,
         'form': form,
         'comments': comments
@@ -109,7 +106,7 @@ def follow_index(request):
     author_ids = [followed.author.id for followed in followed_authors]
     post_list = Post.objects.filter(
         author__in=author_ids).select_related('group')
-    page_obj = posts_paginator(request, post_list, POSTS_COUNT)
+    page_obj = posts_paginator(request, post_list, POSTS_PER_PAGE)
     return render(request, 'posts/follow.html', {'page_obj': page_obj})
 
 
