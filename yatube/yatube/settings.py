@@ -23,11 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'q4y2)ai(*z-d)5mk6^r2rd9o*u9jw0&t*j08ll*(sb_y60aaqg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
 
 ALLOWED_HOSTS = [
+	'51.250.90.108'
     'localhost',
     '127.0.0.1',
     '[::1]',
