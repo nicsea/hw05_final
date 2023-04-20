@@ -28,7 +28,7 @@ DEBUG = False
 CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
 
 ALLOWED_HOSTS = [
-	'51.250.90.108'
+	'51.250.90.108',
     'localhost',
     '127.0.0.1',
     '[::1]',
